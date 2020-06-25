@@ -1,24 +1,20 @@
-# README
+# Clean Architecture Dojo App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Running
 
-Things you may want to cover:
+```
+docker-compose up
+```
 
-* Ruby version
+## Project Requirements
 
-* System dependencies
 
-* Configuration
+Create a JSON REST API to manage leads. The project needs to:
+* Create leads
+* List Leads
+* Lead Score calculator
+  - In case the lead has an address, +50 points
+  - In case the lead has an email @gmail.com, +5 points
+  - In case the lead has a phone number, +75 points
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Return the lead score for every lead when listing leads
