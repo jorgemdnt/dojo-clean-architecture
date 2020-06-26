@@ -1,6 +1,5 @@
 require 'rails_helper'
-
-
+require 'leads/entities/lead'
 
 RSpec.describe Leads::CreateLeadPresenter do
   let(:presenter) { described_class.new }
@@ -33,7 +32,35 @@ RSpec.describe Leads::CreateLeadPresenter do
     end
 
     context 'when lead created' do
-      
+      let(:created_lead) do
+        Leads::Entities::Lead.new(
+          id: 1,
+          email: 'example@example.com',
+          name: 'Foo',
+          phone: '99 99999 9999'
+        )
+      end
+
+      before do
+        presenter.created_with_success(created_lead)
+
+      end
+
+      it 'returns http status 201' do
+        response = presenter.make_response
+        expect(response[:status]).to eq(:created)
+      end
+
+      it 'returns created lead in body' do
+        response = presenter.make_response
+        expect(response[:body])
+          .to have_attributes(
+            id: 1,
+            email: 'example@example.com',
+            name: 'Foo',
+            phone: '99 99999 9999'
+        )
+      end
     end
   end
 end

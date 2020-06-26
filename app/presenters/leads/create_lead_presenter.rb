@@ -13,6 +13,13 @@ module Leads
       }
     end
 
+    def created_with_success(created_lead)
+      @http_status = :created
+      @body = {
+
+      }
+    end
+
     def make_response
       {
         status: @http_status,
