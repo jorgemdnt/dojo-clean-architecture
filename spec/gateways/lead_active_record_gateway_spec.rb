@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'leads/entities/lead'
 
-RSpec.describe Leads::LeadGateway do
+RSpec.describe Leads::LeadActiveRecordGateway do
   let(:gateway) { described_class.new }
 
   describe '#create_lead' do

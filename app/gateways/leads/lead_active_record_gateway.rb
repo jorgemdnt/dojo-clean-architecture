@@ -1,5 +1,5 @@
 module Leads
-  class LeadGateway
+  class LeadActiveRecordGateway
     def create_lead
 
     end
