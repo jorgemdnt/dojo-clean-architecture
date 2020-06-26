@@ -12,7 +12,8 @@ module Leads
           return
         end
 
-        @lead_gateway.create_lead(new_lead_entity)
+        created_lead = @lead_gateway.create_lead(new_lead_entity)
+        @presenter.created_with_success(created_lead)
       end
     end
   end

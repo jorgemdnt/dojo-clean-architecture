@@ -27,6 +27,7 @@ RSpec.describe Leads::Usecases::CreateLeadUsecase do
       end
 
       it 'creates lead' do
+        allow(presenter).to receive(:created_with_success)
         expect(gateway).to receive(:create_lead).with(new_lead)
 
         usecase.run(new_lead)
@@ -34,8 +35,7 @@ RSpec.describe Leads::Usecases::CreateLeadUsecase do
 
       it 'presents success' do
         allow(gateway).to receive(:create_lead).with(new_lead).and_return(created_lead)
-
-        expect(presenter).to receive(:created_with_success).with(new_lead)
+        expect(presenter).to receive(:created_with_success).with(created_lead)
 
         usecase.run(new_lead)
       end

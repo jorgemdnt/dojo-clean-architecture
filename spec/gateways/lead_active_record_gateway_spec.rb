@@ -36,6 +36,12 @@ RSpec.describe Leads::LeadActiveRecordGateway do
                     phone: '99 99999 9999'
                 )
       end
+
+      it 'should return Leads::Entities::Lead' do
+        created_lead = gateway.create_lead(new_lead)
+
+        expect(created_lead).to be_a(Leads::Entities::Lead)
+      end
     end
   end
 end
