@@ -16,14 +16,17 @@ module Leads
     def created_with_success(created_lead)
       @http_status = :created
       @body = {
-
+        email: created_lead.email,
+        id: created_lead.id,
+        name: created_lead.name,
+        phone: created_lead.phone
       }
     end
 
     def make_response
       {
         status: @http_status,
-        body: @body
+        json: @body
       }
     end
   end

@@ -19,7 +19,7 @@ RSpec.describe Leads::CreateLeadPresenter do
 
         response = presenter.make_response
 
-        expect(response[:body][:type]).to eq(:empty_email)
+        expect(response[:json][:type]).to eq(:empty_email)
       end
 
       it 'returns body with message error' do
@@ -27,7 +27,7 @@ RSpec.describe Leads::CreateLeadPresenter do
 
         response = presenter.make_response
 
-        expect(response[:body][:message]).to eq('Invalid e-mail.')
+        expect(response[:json][:message]).to eq('Invalid e-mail.')
       end
     end
 
@@ -53,13 +53,13 @@ RSpec.describe Leads::CreateLeadPresenter do
 
       it 'returns created lead in body' do
         response = presenter.make_response
-        expect(response[:body])
-          .to have_attributes(
+        expect(response[:json])
+          .to eq(
             id: 1,
             email: 'example@example.com',
             name: 'Foo',
             phone: '99 99999 9999'
-        )
+          )
       end
     end
   end
