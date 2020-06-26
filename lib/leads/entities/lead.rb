@@ -9,6 +9,10 @@ module Leads
         @name = name
         @phone = phone
       end
+
+      def valid_email?
+        email != nil && email != ''
+      end
     end
   end
 end
