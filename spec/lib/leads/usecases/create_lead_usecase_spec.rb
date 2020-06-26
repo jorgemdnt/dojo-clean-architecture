@@ -17,8 +17,25 @@ RSpec.describe Leads::Usecases::CreateLeadUsecase do
         )
       end
 
+      let(:created_lead) do
+        Leads::Entities::Lead.new(
+          id: 1,
+          email: 'example@example.com',
+          name: 'Foo',
+          phone: '99 99999 9999'
+        )
+      end
+
       it 'creates lead' do
         expect(gateway).to receive(:create_lead).with(new_lead)
+
+        usecase.run(new_lead)
+      end
+
+      it 'presents success' do
+        allow(gateway).to receive(:create_lead).with(new_lead).and_return(created_lead)
+
+        expect(presenter).to receive(:created_with_success).with(new_lead)
 
         usecase.run(new_lead)
       end

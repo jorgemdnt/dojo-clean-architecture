@@ -25,6 +25,17 @@ RSpec.describe Leads::LeadActiveRecordGateway do
                     phone: '99 99999 9999'
                 )
       end
+
+      it 'should return created lead' do
+        created_lead = gateway.create_lead(new_lead)
+        expect(created_lead)
+            .to have_attributes(
+                    id: be_an(Integer),
+                    email: 'example@example.com',
+                    name: 'Foo',
+                    phone: '99 99999 9999'
+                )
+      end
     end
   end
 end
